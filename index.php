@@ -16,8 +16,6 @@ session_start();
   
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 
-  
-  
 	<!-- Font Awesome CSS -->
 	<link rel="stylesheet" href="css/fontawesome-free-5.7.2-web/css/all.min.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<!-- global CSS -->
@@ -118,8 +116,8 @@ session_start();
         </div>
       </div><!-- register Form End-->
 
-  </div>  <!-- login col end --> 
-</div>   <!-- login row end -->
+  </div>  <!-- login col ended --> 
+</div>   <!-- login row ended -->
      
 
 <?php
