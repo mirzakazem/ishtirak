@@ -26,11 +26,11 @@ app.config(function($routeProvider) {
 	.when("/profile", {
         templateUrl : "views/profile.html"
     })
-    /*
-    .when("/costumer", {
-        templateUrl : "views/costumer.html"
+    
+    .when("/PDF", {
+        templateUrl : "views/PDF.html"
     })
-    */
+    
 	.otherwise({redirectTo : '/customers'})
 	;
 });
