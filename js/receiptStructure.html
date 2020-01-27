@@ -1,0 +1,81 @@
+
+    <table class="tg" style="table-layout: fixed; width: 550px">
+    <colgroup>
+    <col style="width: 121px">
+    <col style="width: 190px">
+    <col style="width: 150px">
+    <col style="width: 181px">
+    </colgroup>
+    <tr>
+        <td class="tg-baqh" rowspan="2"><span style="font-weight:bold">LOGO</span></td>
+        <td class="tg-baqh" colspan="2" rowspan="2"><span style="font-weight:bold">$stationName</span><br>$stationPhone<br><br><br>'+response.data.month+'</td>
+        <td class="tg-0lax">Receipt number:'+response.data.id+'</td>
+    </tr>
+    <tr>
+        <td class="tg-0lax">Issue date:'+response.data.createdOn+'</td>
+    </tr>
+    <tr>
+        <td class="tg-oe15"></td>
+        <td class="tg-oe15"></td>
+        <td class="tg-oe15"></td>
+        <td class="tg-oe15"></td>
+    </tr>
+    <tr>
+        <td class="tg-qtf5">MR / MRs:</td>
+        <td class="tg-mcqj">'+response.data.fullName+'</td>
+        <td class="tg-kj9p">KW Price</td>
+        <td class="tg-s2ta">'+response.data.KWPrice+'LBP</td>
+    </tr>
+    <tr>
+        <td class="tg-73oq">Phone</td>
+        <td class="tg-mcqj">'+response.data.customerPhone+'</td>
+        <td class="tg-kj9p">KW consumption</td>
+        <td class="tg-s2ta">'+response.data.consumption+' KW</td>
+    </tr>
+    <tr>
+        <td class="tg-zv4m"></td>
+        <td class="tg-zv4m"></td>
+        <td class="tg-zv4m"></td>
+        <td class="tg-km2t"></td>
+    </tr>
+    <tr>
+        <td class="tg-73oq">Box - counter</td>
+        <td class="tg-mcqj">'+response.data.boxOrder+'</td>
+        <td class="tg-kj9p">consumption fees</td>
+        <td class="tg-s2ta">'+response.data.consumptionFees+' BP</td>
+    </tr>
+    <tr>
+        <td class="tg-73oq">Ampere</td>
+        <td class="tg-mcqj">'+response.data.ampere+'</td>
+        <td class="tg-kj9p">fixed fees</td>
+        <td class="tg-s2ta">'+response.data.fixedFees+' LBP</td>
+    </tr>
+    <tr>
+        <td class="tg-zv4m"></td>
+        <td class="tg-zv4m"></td>
+        <td class="tg-zv4m"></td>
+        <td class="tg-km2t"></td>
+    </tr>
+    <tr>
+        <td class="tg-73oq">Last Value</td>
+        <td class="tg-73oq"><span style="font-weight:bold">'+response.data.previousValue+'</span></td>
+        <td class="tg-3och" rowspan="2">Total</td>
+        <td class="tg-8d4g" rowspan="2">'+response.data.value+' LBP</td>
+    </tr>
+    <tr>
+        <td class="tg-73oq">New Value</td>
+        <td class="tg-73oq"><span style="font-weight:bold">'+response.data.newValue+'</span></td>
+    </tr>
+    <tr>
+        <td class="tg-zv4m"></td>
+        <td class="tg-zv4m"></td>
+        <td class="tg-zv4m"></td>
+        <td class="tg-km2t"></td>
+    </tr>
+    <tr>
+        <td class="tg-wp8o" colspan="4">$note</td>
+    </tr>
+    <tr>
+        <td class="tg-wp8o" colspan="4">Powered By: <span style="font-style:italic">www.ishtirak.live</span></td>
+    </tr>
+    </table>

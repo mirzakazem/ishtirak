@@ -1,0 +1,159 @@
+<style>  
+		li{  
+			 cursor:pointer;  
+		}  
+		li:hover  
+		{  
+			 background-color:#f9f9f9;  
+		}  
+</style>
+
+   <div class="container-fluid" ng-controller="values_controller">
+    	<div class="row">
+		
+			<div class="col-md-6 col-sm-4 vdivide">
+				<h4 class="text-center">Fill Values</h4>
+		
+						<form ng-submit="getValuesCustomers()">
+							<div class="row">
+								<div class="col-sm-6 btn">	
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Month</span>
+										</div>
+											<input type="month" ng-model="counter.month" class="form-control" required>
+														
+									</div>
+								</div>	
+									
+						
+
+								
+
+									<div class="col-sm-3 btn">
+										<input type="submit" class="form-control btn btn-outline-primary" value="{{submitButton}}">
+									</div>
+											
+										
+								<div class="col-sm-3 btn">
+										<input type="reset" ng-click="resetForm()" class="form-control btn btn-outline-secondary" value="Cancel">
+								</div>
+
+								
+
+							</div>
+
+					</form>				
+				
+					<div>	
+							<div class="{{feedbackClass}} d-block" ng-show="{{feedback}}">
+									{{feedbackMessage}}
+							</div>
+							<div style="width:43em;">
+									<table  class="table  mb-0">
+											<thead class="thead-dark">
+												<tr>
+												  <th>N</th>
+												  <th ng-click="orderByMe('counterID')" data-toggle="tooltip" title="click to sort">Counter</th>
+												  <th >Name</th>
+												  <th >current</th>
+												  <th >New Value</th>
+												  <th>Actions</th>
+												</tr>
+											</thead>
+										</table>
+							</div>	
+								
+						<div style="width:43em;height:25rem;overflow:auto;">
+								<table class="table table-hover">
+										<tbody>
+											<tr ng-repeat="customer in customers | orderBy:myOrderBy:direction | filter:search.bar">
+												
+												<th class="text-primary">{{$index + 1}}</th>
+												<th class="text-danger">{{customer.boxOrder}}</th>
+												<td>{{customer.fullName}}</td>
+												<th>{{customer.newValue}}</th>
+											<form>
+												<td><input type="number" ng-model="customer.addValue" ng-disabled='{{customer.disabled}}'></td>
+												<td><button type="button" class="btn btn-warning" ng-click="addValue(customer.id,customer.boxOrder,customer.addValue, customer.newValue, customer.valueID)"><i class="fas fa-user-edit"></i></button></td>
+											</form>
+											
+												
+										  </tr>
+											
+											
+										</tbody>  
+										</table>
+						</div>
+								
+							
+						</div>
+
+						
+						
+
+
+				</div>	
+<!-- end of the first part -->		
+			<div class="col-md-6 col-sm-8">
+			
+			<div class="row">
+			
+			<div class="col-12">
+			<div class="col-xs-12">
+			<H4 class="text-center"> <i class="text-danger">{{total}}</i> Values	</h4>
+			</div>
+			<!-- Search form -->
+				<input class="form-control" ng-model="search.bar" type="text" placeholder="Filter by : Name | counter">
+				<br>
+		<div class="col-12 ">
+
+		<div style="width:42em;">
+			<table  class="table table-hover   mb-0">
+				<thead class="thead-dark">
+					<tr>
+					  <th ng-click="orderByMe('id')" data-toggle="tooltip" title="click to sort">N</th>
+					  <th ng-click="orderByMe('counterID')" data-toggle="tooltip" title="click to sort">Counter</th>
+	
+					  <th ng-click="orderByMe('fullName')" data-toggle="tooltip" title="click to sort">Name</th>
+					  <th ng-click="orderByMe('previous')" data-toggle="tooltip" title="click to sort">Last</th>
+					  <th ng-click="orderByMe('new')" data-toggle="tooltip" title="click to sort">New</th>
+					  <th ng-click="orderByMe('consumption')" data-toggle="tooltip" title="click to sort">consumption</th>
+					  <th ng-click="orderByMe('month')" data-toggle="tooltip" title="click to sort">Date</th>
+					  <th ng-click="orderByMe('issued')" data-toggle="tooltip" title="click to sort">Issued</th>
+					  <th>Action</th>
+					</tr>
+				</thead>
+			</table></div>		
+			
+				<div style="width:42em;height:29rem;overflow:auto;">
+					<table class="table table-hover">
+						<tbody>
+							<tr ng-repeat="value in values | orderBy:myOrderBy:direction | filter:search.bar">
+								
+								<th class="text-primary">{{$index + 1}}</th>
+								<th class="text-danger">{{value.boxOrder}}</th>
+								<th>{{value.fullName}}</th>
+								<td>{{value.previous}}</td>
+								<td>{{value.new}}</td>
+								<th>{{value.consumption}}</th>
+								<td>{{value.month}}</td>
+								<td>{{value.issued}}</td>
+								<td><button type="button" class="btn btn-danger" ng-click="deleteValue(value.id)"><i class="fas fa-trash-alt"></i></button></td>
+							
+						  </tr>
+							
+							
+						</tbody>  
+					</table>
+				</div>
+			
+		</div>	
+			
+			
+		</div>
+		</div>
+	</div>
+</div>
+
+

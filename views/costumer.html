@@ -1,0 +1,487 @@
+ <style>
+
+	
+  </style>
+   
+   <div class="container-fluid" ng-controller="costumer">
+   
+    	<div class="row">
+		
+				
+			
+			
+		<div class="col-sm-4 vdivide">
+				<div class="row bg-danger">
+					<div class="col-sm-12">
+						<h4 class="text-center text-white">Kazem Seblani </h4>
+					</div>
+				</div>
+		
+			
+			
+			<div style="display:{{costumerInfo}}">
+			 <h4>Costumer Info</h4>
+			 <form id="login-form"  role="form" style="display: block;">
+										
+									<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text"><b>ID</b></span>
+												</div>
+												<input type="text" class="form-control" value="KS851" disabled>
+												
+												
+									</div>
+									<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">First Name</span>
+												</div>
+												<input type="text" class="form-control" value="Kazem" disabled>
+												
+												
+									</div>
+									<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">last Name</span>
+												</div>
+												<input type="text" class="form-control" value="Seblani" disabled>
+												
+												
+									</div>
+									<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">Telephone</span>
+												</div>
+												<input type="text" class="form-control" value="Seblani" disabled>
+												
+												
+									</div>
+									<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">Email</span>
+												</div>
+												<input type="text" class="form-control" value="kazem.seblani@gmail.com" disabled>
+												
+												
+									</div>
+									<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">Address</span>
+												</div>
+												<input type="text" class="form-control" value="beirut, laylaki street, hashem bldg. 3rd floor" disabled>
+												
+												
+									</div>
+								
+									
+			
+								
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-4 offset-sm-2">
+												<input type="submit" name="register-add" id="register-add"  class="form-control btn btn-primary" value="Edit">
+											</div>
+											<br>
+												<br>
+										
+										
+											<div class="col-sm-4">
+												<input type="reset" name="register-reset" id="login-submit"  class="form-control btn btn-secondary" value="Reset">
+											</div>
+										</div>
+									</div>
+									<div class="invalid-feedback d-block">
+										Invalid Message will be written here
+									</div>
+									<div class="valid-feedback d-block">
+										New user succuessfully registered
+									</div>
+				</form>
+				</div>
+				
+				<div class="row" style="display:{{counterInfo}}">
+				<div  class="col-sm-12">
+					<h4>Add Counter</h4>
+					
+					<form class="form-group">
+					<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">Ampergae</span>
+												</div>
+										
+										  <select class="form-control" id="sel1">
+											<option>5 A</option>
+											<option>7 A</option>
+											<option>10 A</option>
+											<option>15 A</option>
+											<option>20 A</option>
+										  </select>
+										  <input type="submit" name="register-add" id="register-add"  class="form-control btn btn-primary" value="Add">
+					</div>	
+					</form>
+				
+				</div>
+				<div class="col-sm12">
+				<h4>Counter Info</h4>
+				<table class="table">
+			<thead class="thead-light">
+				<tr>
+				  <th scope="col">ID</th>
+				  <th scope="col">Amperage</th>
+				  <th scope="col">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+			
+				  <td>KS85A</td>
+				  <td>5 A</td>
+				<td> <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>&nbsp<button type="button" class="btn btn-warning"><i class="fas fa-user-edit"></i></button></td>
+				</tr>
+				
+				<tr>
+			
+				  <td>KS85B</td>
+				  <td>5 A</td>
+				<td> <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>&nbsp<button type="button" class="btn btn-warning"><i class="fas fa-user-edit"></i></button></td>
+				</tr>
+				
+				
+			</tbody>  
+			</table>
+			<div class="invalid-feedback d-block">
+										Invalid Message will be written here
+									</div>
+									<div class="valid-feedback d-block">
+										New user succuessfully registered
+									</div>
+				</div>
+			</div>
+			
+			<div class="row" style="display:{{noteInfo}}">
+				<div  class="col-sm-12">
+					<h4>Add Note</h4>
+					
+					<form class="form-group">
+									<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">Note&nbsp</span>
+												</div>
+												<input type="text" class="form-control" placeholder="note" required>
+												
+									</div>
+									<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">Date&nbsp</span>
+												</div>
+												<input type="date" class="form-control"required>
+												
+												
+									</div>
+									
+											<input type="submit" name="register-add" id="register-add"  class="form-control btn btn-primary mb-2" value="Add">
+											<input type="reset" name="register-reset" id="login-submit"  class="form-control btn btn-secondary" value="Cancel">
+											
+					</form>
+									<div class="invalid-feedback d-block">
+										Invalid Message will be written here
+									</div>
+									<div class="valid-feedback d-block">
+										New user succuessfully registered
+									</div>
+				</div>
+				
+			
+			</div>
+			
+			
+		</div>
+		<!-- Second Column -->
+		
+	<div class="col-sm-8" >
+	
+		<div class="row">
+			<div class="col-sm-12">
+			<nav class="navbar navbar-expand navbar-dark bg-dark">
+				
+     
+								<button type="button" class="btn {{receiptsBtn}} btn-block rounded-0" ng-click="showReceipts()">Receipts</button>
+								<button type="button" class="btn {{countersBtn}} btn-block rounded-0" ng-click="showCounters()">Counters</button>
+								<button type="button" class="btn {{notesBtn}} btn-block rounded-0" ng-click="showNotes()">Notes</button>
+						
+				
+			</nav>	
+			</div>
+		</div>
+		
+			<!-- Receipts Info  Section -->
+		<div style="display:{{receipts}};">
+		<div class="row">
+			
+			<div class="col-sm-12">
+			
+			<H4 class="text-center"> <i>5</i> Receipts	</h4>
+			</div>
+		</div>
+		
+		<!-- Search form -->
+			<div class="row">
+			<div class="col-sm-4">
+				<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">Status</span>
+												</div>
+												 <select class="form-control" id="sel1"required>
+													
+														<option>Paid</option>
+														<option>Unpaid</option>
+												</select>
+												
+				</div>
+			</div>
+
+			<div class="col-sm-4">
+				<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">From</span>
+												</div>
+												<input type="date" class="form-control"required>
+												
+												
+				</div>
+			</div>
+			<div class="col-sm-4">	
+				<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">To</span>
+												</div>
+												<input type="date" class="form-control"required>
+												
+												
+				</div>
+			</div>
+
+			
+
+			</div>
+			
+			
+	<div  class="row" id="options" style="visibility : {{options}}">
+			
+		<div class="col-4">
+			
+				<label>Mark as Paid</label>
+					<button type="button" class="btn btn-success"><i class="fas fa-hand-holding-usd"></i></button>
+					<br>
+		<!--
+		<label>Mark as Unpaid</label>
+		<button type="button" class="btn btn-danger"><i class="fas fa-hand-holding-usd"></i></button>
+		-->
+		</div>
+		
+		<div class="col-4">
+		<label>download</label>
+		<button type="button" class="btn btn-primary"><i class="fas fa-download"></i></button>
+		
+		
+		</div>
+		
+		<div class="col-4 text-center">
+		<label> Delete </label>
+		<button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+			</div>
+		</div>
+	<div class="row">
+		<div class="col-12">		
+		<table class="table">
+			<thead class="thead-light">
+				<tr>
+				  <th scope="col">#</th>
+				  <th scope="col">Full Name</th>
+				  <th scope="col">Counter Id</th>
+					<th scope="col">Date</th>
+					<th scope="col">Value</th>
+				  <th scope="col">Status</th>
+				   <th scope="col">Actions</th>
+				</tr>
+			</thead>
+			<tbody id="receipts">
+				<tr>
+			
+				  <th scope="row">1</th>
+				  
+					<td>Kazem Seblani</td>
+					<td>KS85</td>
+					<td>March-19</td>
+					<td>80,000 LBP</td>
+					<td> Unpaid </td>
+				
+				<td><input type="checkbox" class="checkbox" ng-click="menu($event.target.checked)"></button>&nbsp<a href="#"><i class="far fa-eye"></i></a></td>
+				</tr>
+				
+				<th scope="row">2</th>
+				  <td>Said Mohsen</td>
+					<td>SM96</td>
+					<td>March-19</td>
+					<td>57,000 LBP</td>
+					<td> Unpaid </td>
+				
+				<td><input type="checkbox" class="checkbox" ng-click="menu($event.target.checked)"></button>&nbsp<a href="#"><i class="far fa-eye"></i></a></td>
+				</tr>
+				
+				<th scope="row">3</th>
+				  
+				<td>Ali Allam</td>
+					<td>AA78</td>
+					<td>March-19</td>
+					<td>43,000 LBP</td>
+					<td> Unpaid </td>
+				
+				<td><input type="checkbox" class="checkbox" ng-click="menu($event.target.checked)"></button>&nbsp<a href="#"><i class="far fa-eye"></i></a></td>
+				</tr>
+				
+			</tbody>  
+			</table>
+			</div>
+			</div>
+	
+
+	</div>
+
+	<!-- Counters Info Section -->
+	<div id="counter" style="display:{{counters}};">
+	<div class="row" > 
+	
+	<div class="col-sm-12"  >
+	<h4 class="text-center">  <i>2</i> Counters <i>3</i> records	</h4>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col-sm-3"  >
+	
+									<div class="form-group">
+										
+										  <select class="form-control" id="sel1">
+											<option>KS85A</option>
+											<option>KS85B</option>
+										  </select>
+									</div>
+	</div>
+	<div class="col-sm-3">
+									<div class="form-group">
+										<input type="number" name="costumerLName" id="costumerLName"  class="form-control" placeholder="New Value" required>
+									</div>
+	</div>
+	<div class="col-sm-4">
+										<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">Month</span>
+												</div>
+												<input type="month" class="form-control"required>
+												
+												
+										</div>
+	</div>	
+	<div class="col-sm-2">
+									<div>
+												<input type="submit" name="register-add" id="register-add"  class="form-control btn btn-primary" value="Add">
+									</div>
+	
+	</div>	
+	</div>
+	<div class="row">
+	<div class="col-sm-12">
+	<table class="table">
+			<thead class="thead-light">
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Counter Id</th>
+					<th scope="col">Date</th>
+					<th scope="col">New Value</th>
+					<th scope="col">Previous Value</th>
+					<th scope="col">Actions</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr>
+			
+					<th scope="row">1</th>
+					<td>KS85</td>
+					<td>March-19</td>
+					<td>450</td>
+					<td>300</td>
+				
+					<td> <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>&nbsp<button type="button" class="btn btn-warning"><i class="fas fa-user-edit"></i></button></td>
+				</tr>
+				
+				<tr>
+				<th scope="row">2</th>
+
+					<td>KS85</td>
+					<td>February-19</td>
+					<td>300</td>
+					<td>250</td>
+				
+					<td> <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>&nbsp<button type="button" class="btn btn-warning"><i class="fas fa-user-edit"></i></button></td>
+				</tr>	
+			</tbody>
+			
+			</table>
+		</div>
+		</div>
+	</div>
+	
+	<!-- Notes Info Section -->
+	<div id="note" style="display:{{notes}};">
+	<div class="row" > 
+	
+	<div class="col-sm-12"  >
+	<h4 class="text-center">  <i>2</i> Notes</h4>
+	</div>
+	</div>
+	
+
+	<div class="row">
+	<div class="col-sm-12">
+	<table class="table">
+			<thead class="thead-light">
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Note</th>
+					<th scope="col">Date</th>
+					<th scope="col">Actions</th>
+					
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr>
+			
+					<th scope="row">1</th>
+					<td>some notes</td>
+					<td>March-19</td>
+					<td> <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>&nbsp<button type="button" class="btn btn-warning"><i class="fas fa-user-edit"></i></button></td>
+				</tr>
+				
+				<tr>
+			
+					<th scope="row">2</th>
+					<td>another note</td>
+					<td>March-19</td>
+					<td> <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>&nbsp<button type="button" class="btn btn-warning"><i class="fas fa-user-edit"></i></button></td>
+				</tr>
+				
+			</tbody>
+			
+			</table>
+		</div>
+		</div>
+	</div>
+	
+	
+		</div>
+		</div>
+	</div>
+
+   

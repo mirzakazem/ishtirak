@@ -1,0 +1,34 @@
+div.row {
+			margin-left:0px;
+			margin-right:0px;
+		}
+		
+div.padding
+{
+	padding-left:0px;
+	padding-right:0px;
+}
+
+.btn {
+	
+	padding-right:3px;
+	padding-left:3px;
+	/* make it for the logos only, exclude the form buttons
+    border-bottom-width: 0px;
+	border-top-width: 0px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+	*/
+}
+
+.vdivide  {
+ 	
+	border-right-style: solid;
+	border-color:#e0e0e0;
+	border-width:2px;
+	
+}
+.options{
+	visibility:hidden;
+}
+

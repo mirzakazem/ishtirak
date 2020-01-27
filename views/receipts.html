@@ -1,0 +1,277 @@
+
+   
+   <div class="container-fluid" ng-controller="receipts">
+    	<div class="row">
+		
+			<div class="col-sm-4 vdivide">
+			 <h4 class="text-center">Issue Receipts</h4>
+			 <form ng-submit="issueReceipts()" style="display: block;">
+									
+									
+									<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">KW</span>
+												</div>
+												<input type="text" ng-model="receipt.KWPrice" class="form-control" placeholder="kilo whatt price" >
+												<div class="input-group-append">
+												<span class="input-group-text">LBP</span>
+												</div>
+									</div>
+									
+									<hr>
+									
+									<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">5A &nbsp</span>
+												</div>
+												<input type="text" ng-model="receipt.A5"  class="form-control" placeholder="5 A fees" >
+												<div class="input-group-append">
+												<span class="input-group-text">LBP</span>
+												</div>
+									</div>
+									
+									
+									<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">10A</span>
+												</div>
+												<input type="text" ng-model="receipt.A10" class="form-control" placeholder="10 A fees" >
+												<div class="input-group-append">
+												<span class="input-group-text">LBP</span>
+												</div>
+									</div>
+									<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">15A</span>
+												</div>
+												<input type="text" ng-model="receipt.A15" class="form-control" placeholder="15 A fees" > 
+												<div class="input-group-append">
+												<span class="input-group-text">LBP</span>
+												</div>
+									</div>
+									<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">20A</span>
+												</div>
+												<input type="text" ng-model="receipt.A20" class="form-control" placeholder="20 A fees" >
+												<div class="input-group-append">
+												<span class="input-group-text">LBP</span>
+												</div>
+									</div>
+											
+									<hr>
+									<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">Month</span>
+												</div>
+												<input type="month" ng-model="receipt.month" class="form-control">
+												
+									</div>
+									
+									
+								
+								
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-4 offset-sm-2 btn">
+												<input type="submit" name="register-add" id="register-add"  class="form-control btn btn-primary" value="Proceed">
+											</div>
+										
+											<div class="col-sm-4 btn">
+												<input type="reset" name="register-reset" id="login-submit"  class="form-control btn btn-secondary" value="Cancel">
+											</div>
+										</div>
+									</div>
+									<div class="{{feedbackClass}} d-block" ng-show="{{feedback}}">
+										{{feedbackMessage}}
+										
+									</div>
+									
+									
+								</form>
+				</div>
+		
+			<div class="col-sm-8">
+			
+			<div class="row">
+			
+			<div class="col-sm-12">
+			
+			<h4 class="text-center"> <i class="text-danger">{{unpaidTotal}}/{{count}}</i> Unpaid, total value:  <i class="text-danger">{{value | number:0}}</i></h1>
+			</div>
+			</div>
+			<!-- Search form -->
+			<div class="row">
+			<div class="col-sm-3">
+				<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">Status</span>
+												</div>
+												 <select ng-model="search.status" ng-change="getReceipts()" class="form-control" id="sel1"required>
+													
+														<option>Paid</option>
+														<option>Unpaid</option>
+												</select>
+												
+				</div>
+			</div>
+
+			<div class="col-sm-3">
+				<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">From</span>
+												</div>
+												<input type="date" ng-model="search.from" ng-change="getReceipts()" class="form-control"required>
+												
+												
+				</div>
+			</div>
+			<div class="col-sm-3">	
+				<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">To</span>
+												</div>
+												<input type="date" ng-model="search.to" ng-change="getReceipts()" class="form-control"required>
+												
+												
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="input-group mb-3">
+					
+						<button ng-click="clearSearch()" class="input-group-text">X</button>
+					
+					
+				</div>
+				
+	
+				</div>
+			
+
+			</div>
+
+		<div  class="row" id="options" style="visibility : {{options}}">
+			
+		<div class="col-3">
+			
+				<label>Mark as Paid</label>
+					<button type="button" ng-click="updateStatus(1)" class="btn btn-success"><i class="fas fa-hand-holding-usd"></i></button>
+					<br>
+		
+		</div>
+
+		<div class="col-3">
+		<label>Mark as Unpaid</label>
+		<button type="button" ng-click="updateStatus(0)" class="btn btn-warning"><i class="fas fa-hand-holding-usd"></i></button>
+		
+		</div>
+		
+		<div class="col-3">
+		<label>download</label>
+		<button type="button" ng-click="printReceipt()" class="btn btn-primary"><i class="fas fa-download" ></i></button>
+		
+		
+		</div>
+		
+		<div class="col-3">
+		<label> Delete </label>
+		<button type="button" ng-click="deleteReceipts()" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+			</div>
+		</div>
+	<div class="row">
+
+		<!-- show one Receipt Div start-->
+		<div class="col-12" ng-show="showOneReceipt">
+				<div style="width:51em; height:20px;">
+					<button  class="btn btn-primary" ng-click="hideReceipt()">Back</button>
+					<table class="table mb-0">
+									
+									  <tr>
+										<td>Month <b>{{receipt.month | date:'MMM-yyyy'}}</b></th>
+										<td >Receipt number: <b>{{receipt.id}}</b></td>
+										<td>Issue date: <b>{{receipt.createdOn | limitTo:10 | date:'dd-MM-yyyy'}}</b></td>
+									  </tr>
+									  <tr>
+										<td >fullName <b>{{receipt.fullName}}</b></td>
+										<td ></td>
+										<td >KW Price <b>{{receipt.KWPrice}} </b><i>LBP </i> </td>
+									  </tr>
+									  <tr>
+										<td >customerPhone <b>{{receipt.customerPhone}}</b></td>
+										<td ></td>
+										<td >KW consumption <b>{{receipt.consumption}}</b> KW</td>
+									  </tr>
+									  <tr>
+										<td>box-order <b>{{receipt.boxOrder}}</b></td>
+										<td></td>
+										<td>consumption fees <b>{{receipt.consumptionFees |number}}</b> <i> LBP</i></td>
+									  </tr>
+									  <tr>
+										<td >Ampere <b>{{receipt.ampere}}</b></td>
+										<td ></td>
+										<td >fixed fees <b>{{receipt.fixedFees |number}}</b> <i>LBP</i></td>
+									  </tr>
+									  <tr>
+										<td >Last Value <b>{{receipt.previousValue}}</b></td>
+										<td ></td>
+										<td  rowspan="2">Total <b class="text-danger">{{receipt.value |number}} </b><i>LBP</i> </td>
+									  </tr>
+									  <tr>
+										<td >New Value <b>{{receipt.newValue}}</b></td>
+										<td ></span></td>
+									  </tr>
+									  
+									
+									
+					</table>
+
+		</div>
+	</div>	
+		<!-- show one Receipt Div end-->
+		
+		<!-- show all Receipt Div start-->
+		<div class="col-12" ng-show="showAllReceipts">
+
+	
+		<div style="width:51em;">
+		<table class="table mb-0">
+							<thead class="thead-dark">
+								<tr >
+									<th  data-toggle="tooltip" title="click to sort">N</th>
+									<th  data-toggle="tooltip" title="click to sort">Box-Order</th>
+									<th	 data-toggle="tooltip" title="click to sort">Full Name</th>
+									<th  data-toggle="tooltip" title="click to sort">Date</th>
+									<th  data-toggle="tooltip" title="click to sort">Value</th>
+									<th  data-toggle="tooltip" title="click to sort">Status</th>
+									<th scope="col">Actions</th>
+								</tr>
+							</thead>
+			</table>
+			</div>			
+						<div style="width:51em;height: 22rem;overflow:auto;" >
+							<table class="table table-hover">
+							<tbody id="receipts">
+								<tr  ng-repeat="receipt in receipts" >
+			
+									<th class="text-primary">{{$index+1}}</th>
+									<th class="text-danger">{{receipt.boxOrder}}</th>
+									<th>{{receipt.fullName}}</th>
+									<td>{{receipt.month | date:'MMM-yyyy'}}</td>
+									<td class="text-danger"><b>{{receipt.value | number:0}}</b> LBP</td>
+									<td> {{receipt.status}} </td>
+									<td><input type="checkbox" class="checkbox" ng-click="menu($event.target.checked,receipt.id)"></button>&nbsp<a><i ng-click="showReceipt(receipt.id)" class="far fa-eye" style="cursor: pointer;"></i></a></td>
+								</tr>
+								
+								
+								
+				
+							</tbody> 
+							
+						</table>
+			</div>
+			</div>
+		</div>
+		</div>
+	</div>
+	
+	

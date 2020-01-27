@@ -1,0 +1,45 @@
+
+
+   
+   <div  ng-controller="header">
+				<nav class="navbar navbar-expand-sm navbar-light bg-light  ">
+					<a class="navbar-brand" href="#!customers" ng-class="{'active':selectedTab == 'customers'}" ng-click="tab('customers')">
+						<img src="../code/img/iconIshtirak.png"  alt="icon ishtirak">
+						<b>Ishtirak</b>
+					</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>																							
+					</button>
+
+					<div class="collapse navbar-collapse padding" id="navbarSupportedContent">
+						<ul class="navbar-nav mr-auto">
+     
+							<li class="nav-item">
+								<a class="nav-link" href="#!customers" ng-class="{'active':selectedTab == 'costumers'}" ng-click="tab('customers')">Customers</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#!counters" ng-class="{'active':selectedTab == 'counters'}" ng-click="tab('counters')">Counters</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#!values" ng-class="{'active':selectedTab == 'values'}" ng-click="tab('values')">values</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#!receipts" ng-class="{'active':selectedTab == 'receipts'}" ng-click="tab('receipts')">Receipts</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#!expenses" ng-class="{'active':selectedTab == 'expenses'}" ng-click="tab('expenses')">Expenses</a>
+							</li>
+							<!-- 
+							<li class="nav-item">
+								<a class="nav-link" href="#!costumer">Client</a>
+							</li>
+							-->
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="#!profile">Profile <i class="fas fa-user"></i></a></li>
+								&nbsp
+							<li><a href="logout.php">Logout <i class="fas fa-sign-out-alt"></i></a></li>
+						</ul>
+					</div>
+				</nav>
+	</div>

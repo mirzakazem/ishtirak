@@ -1,0 +1,165 @@
+<link rel="stylesheet" href="css/expenses.css">
+	
+  
+  
+   
+   <div class="container-fluid" ng-controller="expenses_controller">
+    	<div class="row ">
+		
+			<div class="col-sm-4 vdivide">
+			<h4 class="text-center">Add Payment</h4>
+			
+			 <form id="login-form"  role="form" style="display: block;" ng-submit="addExpense()">
+									
+				<input type="hidden" ng-model="expense.id">
+
+									<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">Title&nbsp&nbsp</span>
+												</div>
+												 <select class="form-control" ng-model="expense.title" required>
+														<option>Oil</option>
+														<option>Employee</option>
+														<option>Maintenance</option>
+														<option>Other</option>
+												</select>
+												
+									</div>
+									
+									<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">Value</span>
+												</div>
+												<input type="text" ng-model="expense.value" class="form-control" placeholder="payment value"required>
+												<div class="input-group-append">
+												<span class="input-group-text">LBP</span>
+												</div>
+									</div>
+									
+									<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">Date&nbsp</span>
+												</div>
+												<input type="date" ng-model="expense.date" class="form-control"required>
+												
+												
+									</div>
+
+									
+									
+									<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">Note&nbsp</span>
+												</div>
+												<input type="text" ng-model="expense.note" class="form-control" placeholder="payment note" >
+												
+									</div>
+									
+						
+								
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-4 offset-sm-2 btn">
+												<input type="submit"    class="form-control btn btn-primary" value="{{submitButton}}">
+											</div>
+											
+										
+											<div class="col-sm-4 btn">
+												<input type="reset"  ng-click="resetForm()" class="form-control btn btn-secondary" value="Cancel">
+											</div>
+										</div>
+									</div>
+									<div class="{{feedbackClass}} d-block" ng-show="{{feedback}}">
+										{{feedbackMessage}}
+									</div>
+								</form>
+			</div>
+		
+			<div class="col-sm-8">
+			
+			<div class="row">
+			
+			<div class="col-sm-12">
+			
+			<h4 class=text-center><i class="text-danger">{{total}}</i> payments, total value: <i class="text-danger">{{value | number:0}}</i> LBP </h4>
+			</div>
+			</div>
+			<!-- Search form -->
+			<div class="row">
+			<div class="col-sm-3">
+				<input class="form-control mb-1" type="text" ng-model="search.bar" ng-change="getExpenses()" placeholder="Filter by title">
+			</div>
+
+			<div class="col-sm-3">	
+					<div class="input-group mb-3">
+														<div class="input-group-prepend">
+															<span class="input-group-text">From</span>
+														</div>
+														<input type="date" ng-model="search.from" ng-change="getExpenses()" class="form-control"required>
+								
+					</div>
+			</div>
+
+			<div class="col-sm-3">	
+				<div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text">To&nbsp&nbsp</span>
+													</div>
+													<input type="date" ng-model="search.to" ng-change="getExpenses()" class="form-control"required>
+							
+				</div>
+			</div>
+			<div class="col-sm-3">
+			<div class="input-group mb-3">
+				
+					<button ng-click="clearSearch()" class="input-group-text">X</button>
+				
+				
+			</div>
+			
+
+			</div>
+<br>
+	<div class="row">
+		<div class="col-12">
+		<div style="width:51em;">		
+		<table  class="table table-hover   mb-0">
+			<thead class="thead-dark">
+				<tr>
+				  <th ng-click="orderByMe('id')" data-toggle="tooltip" title="click to sort">ID</th>
+				  <th ng-click="orderByMe('title')" data-toggle="tooltip" title="click to sort">Title</th>
+				  <th ng-click="orderByMe('value')" data-toggle="tooltip" title="click to sort">Value</th>
+					<th ng-click="orderByMe('date')" data-toggle="tooltip" title="click to sort">Date</th>
+					<th scope="col">Descriptions</th>
+				  <th scope="col">Actions</th>
+				</tr>
+			</thead>
+		</table>
+		</div>
+		<div style="width:51em;height:25rem;overflow:auto;">
+
+			<table class="table table-hover">
+			<tbody>
+				<tr ng-repeat="expense in expenses | orderBy:myOrderBy:direction | filter:search.bar">
+					
+				  	<th>{{expense.id}}</th>
+				  	<td>{{expense.title}}</td>
+					<td>{{expense.value | number:0}} LBP</td>
+					<td>{{expense.date | date:'dd/MMM/yyyy' }}</td>
+					
+					<td>{{expense.note}}</td>
+				
+					<td> <button type="button" class="btn btn-danger" ng-click="deleteExpense(expense.id)"><i class="fas fa-trash-alt"></i></button>&nbsp<button type="button" class="btn btn-warning" ng-click="editExpense(expense)"><i class="fas fa-user-edit"></i></button></td>
+			
+				</tr>
+				
+				
+			</tbody>  
+			</table>
+			</div>
+
+			</div>
+		</div>
+		</div>
+	</div>
+</div>

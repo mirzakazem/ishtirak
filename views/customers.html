@@ -1,0 +1,119 @@
+<div class="container-fluid" ng-controller="costumers_controller">
+    	<div class="row" >
+		
+			<div class="col-sm-4 vdivide">
+			 <h4 class="text-center">Add Customer</h4>
+			 
+			 <form id="addCustomer-form"  role="form" style="display: block;"  method="post" ng-submit="addCostumer()">
+									<input type="hidden" ng-model="customer.id">
+									
+									<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">Full Name*</span>
+												</div>
+												<input type="text" ng-model="customer.fullName" class="form-control" placeholder="required" required autofocus>
+												
+									</div>
+									
+									<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">Phone*</span>
+												</div>
+												<input type="text" ng-model="customer.phone" class="form-control" placeholder="8 numbers required" required>
+												
+									</div>
+									<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">Address</span>
+												</div>
+												<input type="text" ng-model="customer.address" class="form-control" placeholder="optional" >
+												
+												
+									</div>
+									<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">Email &nbsp &nbsp &nbsp &nbsp </span>
+												</div>
+												<input type="text" ng-model="customer.email" class="form-control" placeholder="optional" >
+												
+									</div>	
+								
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-4 offset-sm-2 btn">
+												<input type="submit" name="addCostumer" id="addCostumer"  class="form-control btn btn-primary" value="{{submitButton}}">
+											</div>
+											
+										
+											<div class="col-sm-4 btn">
+												<input type="reset" name="resetCostumer" id="resetCostumer" ng-click="resetForm()"  class="form-control btn btn-secondary" value="Cancel">
+											</div>
+										</div>
+									</div>
+									<div class="{{feedbackClass}} d-block" ng-show="{{feedback}}">
+										{{feedbackMessage}}
+									</div>
+								</form>
+				</div>
+		
+			<div class="col-sm-8">
+			
+			<div class="row">
+			
+			<div class="col-12">
+			<div class="col-xs-12">
+			<h4 class="text-center"> <i class="text-danger">{{total}}</i> Costumers</h4>
+			</div>
+			<!-- Search form -->
+			
+		
+				<input class="form-control mb-1" type="text" ng-model="searchBar" placeholder="Filter Costumers by : ID | Name | Phone | Email">
+				
+
+		<div class="col-12" >	
+		<div style="width:51em;">		
+		<table class="table table-hover   mb-0">
+			<thead >
+				<tr class="thead-dark">
+				  <th>N</th>
+				  <th ng-click="orderByMe('fullName')" data-toggle="tooltip" title="click to sort">Full Name</th>
+				  <th >Phone Number</th>
+					<th ng-click="orderByMe('address')" data-toggle="tooltip" title="click to sort">Address</th>
+					<th ng-click="orderByMe('NumberOfCounters')" data-toggle="tooltip" title="click to sort">counter</th>
+					<th ng-click="orderByMe('createdOn')" data-toggle="tooltip" title="click to sort">Creation date</th>
+				  <th >Actions</th>
+				</tr>
+			</thead>
+		</table>
+		</div>
+
+		<div style="width:51em;height:25rem;overflow:auto;">
+
+		<table class="table table-hover">
+			<tbody>
+				<tr ng-repeat="customer in customers | orderBy:myOrderBy:direction | filter:searchBar">
+					
+					<th class="text-primary"><b>{{$index + 1}}</b></th>
+					<th>{{customer.fullName}}</th>
+				  <th>{{customer.phone}}</th>
+					<th>{{customer.address}}</th>
+					<th>{{customer.NumberOfCounters}}</th>
+					<th>{{customer.createdOn}}</th>
+				
+				<td> <button type="button" class="btn btn-danger" ng-click="deleteCustomer(customer.id)"><i class="fas fa-trash-alt"></i></button>&nbsp<button type="button" class="btn btn-warning" ng-click="editCustomer(customer)"><i class="fas fa-user-edit"></i></button></td>
+				</tr>
+			
+				
+			</tbody>  
+			</table>
+		</div>
+			</div>
+			</div>
+			
+		</div>
+		</div>
+	</div>
+</div>
+
+
+
