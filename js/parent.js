@@ -27,8 +27,8 @@ app.config(function($routeProvider) {
         templateUrl : "views/profile.html"
     })
     
-    .when("/PDF", {
-        templateUrl : "views/PDF.html"
+    .when("/documents", {
+        templateUrl : "views/documents.html"
     })
     
 	.otherwise({redirectTo : '/customers'})

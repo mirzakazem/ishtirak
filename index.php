@@ -169,6 +169,7 @@ else
 <script src="js/customer.js"> </script>
 <script src="js/header.js"> </script>
 <script src="js/profile.js"> </script>
+<script src="js/documents.js"> </script>
 
 
 </body>
