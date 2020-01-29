@@ -83,7 +83,7 @@ $scope.showOneReceipt=false;
             }
             else
             {
-               
+            $scope.printReceiptPDF();
             $scope.feedbackClass = 'valid-feedback';
             $scope.feedbackMessage = response.data.message; 
             $scope.submitButton="Add";
@@ -97,6 +97,25 @@ $scope.showOneReceipt=false;
             }
         );
     }
+
+    $scope.printReceiptPDF = function()
+    {
+        $scope.receipt.month=$filter('date')($scope.receipt.month,"yyyy-MM-dd")
+        console.log("sent: "+$scope.receipt.month)
+        $http({
+            method:"POST",
+            url:"php/receipts/TCPDF/examples/receiptsPDF.php",
+            data:$scope.receipt
+        }).then(function(response){
+           console.log(response.data)
+            },
+        function (error) {
+        
+            console.log("callback error status: "+error.status);
+            }
+        );
+    }
+
     
     $scope.getReceipts = function(){
         //$scope.search.from = $filter('date')($scope.search.from,"yyyy-MM-dd")

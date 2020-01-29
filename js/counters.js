@@ -144,7 +144,7 @@ app.controller('counters_controller', function($scope, $http)
           
             $scope.counters = response.data.counters;
             $scope.total = response.data.total
-            
+            console.log(response.data)
             },
         function (error) {
         
