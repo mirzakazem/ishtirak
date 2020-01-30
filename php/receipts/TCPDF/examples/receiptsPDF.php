@@ -16,8 +16,27 @@ $ip_server = $_SERVER['SERVER_ADDR'];
 
 if($ip_server =='160.153.133.148')
     {// online
-    include('../../database_connection.php');
-    $dirPath='/home/smp0h3cnvy4h/PDF/'.$userID.'/receipts';
+    include('../../../database_connection.php');
+    $userDirectory='/home/smp0h3cnvy4h/public_html/documents/'.$userID;
+    
+    
+    //check whether the user folder existed, if not create it
+    if (file_exists($userDirectory)) {
+        echo "file $userDirectory exists";
+    } else {
+        mkdir($userDirectory, 0777 );
+        if (file_exists($userDirectory)) {echo "Directory $userDirectory created successfully";}
+        
+    }
+
+    //check whether the receipts folder existed, if not create it
+    if (file_exists($userDirectory."/receipts")) {
+        echo "file existed $userDirectory.'/receipts'";
+    } else {
+        mkdir($userDirectory."/receipts", 0777 );
+        if (file_exists($userDirectory."/receipts")) {echo " Directory $userDirectory/receipts created successfully";}
+        
+    }
     }
 
 else{//local
@@ -221,15 +240,8 @@ $fileName='receipts-'.$userID.'-'.$from.'.pdf';
 
 ob_end_clean();//output buffers cleaning
 
-//check whether it's local or online server
-if($ip_server =='160.153.133.148')
-    {// online
-        echo"fell the online parameters";
-    }
-    else
-    {//local server
-        $pdf->Output($userDirectory.'/receipts/'.$fileName, 'F');
-    }
+$pdf->Output($userDirectory.'/receipts/'.$fileName, 'F');
+
     
     
 

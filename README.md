@@ -1,6 +1,6 @@
 # To do list
 
-After update: fix printingPDF online
+
 create seach bar (ajax calls)
 
 # next update 
@@ -18,6 +18,7 @@ the working mechanism of receipt issuing
 
 
 # done
+//After update: fix printingPDF online
 //get costumerList.php from online version
 //fix the bootstrap of all data tables
 //compelete the docuemts page (html+JS)
