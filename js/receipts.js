@@ -118,11 +118,11 @@ $scope.showOneReceipt=false;
 
     
     $scope.getReceipts = function(){
-        //$scope.search.from = $filter('date')($scope.search.from,"yyyy-MM-dd")
-        //$scope.search.to = $filter('date')($scope.search.to,"yyyy-MM-dd")
-        /*console.log("status sent :"+$scope.search.status)
+        $scope.search.from = $filter('date')($scope.search.from,"yyyy-MM-dd")
+        $scope.search.to = $filter('date')($scope.search.to,"yyyy-MM-dd")
+        console.log("status sent :"+$scope.search.status)
         console.log("from sent :"+$scope.search.from);
-        console.log("To   sent :"+$scope.search.to);*/
+        console.log("To   sent :"+$scope.search.to);
         
         $http({ 
          method:"POST",

@@ -1,3 +1,12 @@
+<style>
+	.tableFixHead          { overflow-y: auto; height:500px; }
+  .tableFixHead thead th { position: sticky; top: 0; }
+  
+  /* Just common table stuff. Really. */
+  table  { border-collapse: collapse; width: 100%; }
+  td{text-align: center;}
+</style>
+
 <div class="container-fluid" ng-controller="documents_controller">
     <div class="row" >
     
@@ -17,7 +26,7 @@
             
 
     <div class="col-12" >	
-    <div style="width:51em;">		
+    <div class="tableFixHead">		
     <table class="table table-hover   mb-0">
         <thead >
             <tr class="thead-dark">
@@ -27,12 +36,7 @@
               <th >Download</th>
             </tr>
         </thead>
-    </table>
-    </div>
 
-    <div style="width:51em;height:25rem;overflow:auto;">
-
-    <table class="table table-hover">
         <tbody>
             <tr ng-repeat="document in documents | orderBy:myOrderBy:direction | filter:searchBar ">
                 
