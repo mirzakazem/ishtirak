@@ -34,7 +34,10 @@ $lastDayOfTheMonth=date("Y-m-t", strtotime($mydate));
 
 // search and assign results for variable ----------------------------
 $sql = "
-select countersboxorder.*, countersvalues.newValue, countersvalues.`ID` as valueID, countersvalues.`month` from countersboxorder left outer join (select * from countersvalues where countersvalues.month>='$mydate' and countersvalues.month<='$lastDayOfTheMonth' ) as countersvalues on countersboxorder.ID= countersvalues.`counterID` where countersboxorder.userID = '$userID' and countersboxorder.isCounter='yes' and cast(countersboxorder.`createdOn` as date)<='$lastDayOfTheMonth' and countersboxorder.disabled=0 order by countersboxorder.boxOrder
+select countersboxorder.*, countersvalues.newValue, countersvalues.`ID` as valueID, countersvalues.`month` 
+from countersboxorder left outer join (select * from countersvalues where countersvalues.month>='$mydate' 
+and countersvalues.month<='$lastDayOfTheMonth' ) as countersvalues on countersboxorder.ID= countersvalues.`counterID` 
+where countersboxorder.userID = '$userID' and countersboxorder.isCounter='yes' and countersboxorder.disabled=0 order by countersboxorder.boxOrder
 ";
 
 if($result = mysqli_query($connect,$sql))
