@@ -9,7 +9,7 @@ $userID= $_SESSION["ID"];
 
 $sql = "
 
-      SELECT * FROM `getvalues` WHERE `userID`='$userID' order by month DESC, boxorder DESC
+      SELECT * FROM `getvalues` WHERE `userID`='$userID'
       ";
 
 if($result = mysqli_query($connect,$sql))
