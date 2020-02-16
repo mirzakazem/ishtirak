@@ -17,8 +17,8 @@ session_start();
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 
 	<!-- Font Awesome CSS -->
-	<link rel="stylesheet" href="css/fontawesome-free-5.7.2-web/css/all.min.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-	<!-- global CSS -->
+  <script src="https://kit.fontawesome.com/1315e5b906.js" crossorigin="anonymous"></script>
+  <!-- global CSS -->
 	
 	<link rel="stylesheet" href="css/index.css">
 	<link rel="stylesheet" href="css/parent.css">

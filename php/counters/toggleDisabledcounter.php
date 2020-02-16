@@ -6,10 +6,17 @@ include('../database_connection.php');
 $userID= $_SESSION["ID"];
 
 
+$userStatus=$_SESSION["expired"];
+//check expiration status ------------
+if($userStatus!=0){
+    $feedback = 'user is expired';
+    $feedbackClass = 'danger';
+}
 
-//Delete counter by it's id.
+if(empty($feedback))
+{
+//update counter by it's id.
 $id = json_decode(file_get_contents("php://input"));
-
 // get it's disabled status
 
     $sql = "UPDATE `counters` SET `disabled`= 
@@ -24,13 +31,16 @@ $id = json_decode(file_get_contents("php://input"));
     ";
 
     if(mysqli_query($connect,$sql)){
-        $message='Status has been changed';
+        $feedback='Status has been changed';
     }
 
+$feedbackClass = 'success';
+}
 
 
 $output = array(
-    'message' => $message
+    'feedback' => $feedback,
+    'feedbackClass' => $feedbackClass,
    );
    
    echo json_encode($output);

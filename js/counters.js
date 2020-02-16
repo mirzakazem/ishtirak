@@ -187,11 +187,20 @@ app.controller('counters_controller', function($scope, $http, $timeout)
             url:  'php/counters/toggleDisabledCounter.php',
             data:  id
             }).then(function (response)
-            { 
-            $scope.feedbackClass = 'valid-feedback';
-            $scope.feedbackMessage = response.data.message; 
-            $scope.customer={}     
-            $scope.getCounters();
+            {
+            //the below alert for debugging purposes
+          console.log("received: "+response.data.feedback);
+            
+          $scope.alertTimer();
+          $scope.feedbackClass = response.data.feedbackClass;
+          $scope.feedback = response.data.feedback;
+
+         if(response.data.feedbackClass=='success')
+          {
+          $scope.submitButton="Add";
+          $scope.customer={};
+          $scope.getCounters ();
+          }    
             }, function (response) 
             {
             console.log(response.data,response.status);
