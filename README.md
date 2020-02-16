@@ -1,4 +1,7 @@
+# before any updates, backup the PDF files, move documents from public-HTML --> /ishtirak.live/kazem/
+
 # 1.next update 
+ 1. get tcpdf from cdn
  1. add expiry date to new users
  1. check expired users daily, (after each login)
 
