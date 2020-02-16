@@ -1,9 +1,11 @@
 # before any updates, backup the PDF files, move documents from public-HTML --> /ishtirak.live/kazem/
 
 # 1.next update 
+ 1. search on how can force user to clear cache for one time after update
  1. get tcpdf from cdn
  1. add expiry date to new users
  1. check expired users daily, (after each login)
+ 1. fix the neccessity to zoom out
 
 # 1.check later
  1. edit receipts to consider regular breaker
@@ -23,6 +25,7 @@
    1. if user is not active, prevent him doing any changes
    1. in the load page, insert the main info (1 month free, annual fees 450 LBP)
    1. the working mechanism of receipt issuing 
+   1. link to FA through CDN
 
 1. < 16-02-2020
  1. After update: fix printingPDF online
