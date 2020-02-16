@@ -73,7 +73,7 @@ $month= date($year."-".$month."-".$day);
 }
 // date validation ***************************************** 
 
-
+// get the last day of the current month
 $currentDate = date("Y-m-d");
 $lastDayinMonth=date("Y-m-t", strtotime($currentDate));
 

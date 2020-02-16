@@ -1,4 +1,4 @@
-app.controller('counters_controller', function($scope, $http)
+app.controller('counters_controller', function($scope, $http, $timeout)
 {  
     
 
@@ -79,7 +79,7 @@ app.controller('counters_controller', function($scope, $http)
             //the below alert for debugging purposes
             console.log("received: "+response.data.feedback)
             
-            $scope.feedbackShow='true';
+            $scope.alertTimer();
             $scope.feedbackClass = response.data.feedbackClass;
             $scope.feedback = response.data.feedback;
 
@@ -107,7 +107,7 @@ app.controller('counters_controller', function($scope, $http)
                  //the below alert for debugging purposes
             console.log("received: "+response.data.feedback)
             
-            $scope.feedbackShow='true';
+            $scope.alertTimer();
             $scope.feedbackClass = response.data.feedbackClass;
             $scope.feedback = response.data.feedback;
 
@@ -159,7 +159,7 @@ app.controller('counters_controller', function($scope, $http)
           //the below alert for debugging purposes
           console.log("received: "+response.data.feedback);
             
-          $scope.feedbackShow='true';
+          $scope.alertTimer();
           $scope.feedbackClass = response.data.feedbackClass;
           $scope.feedback = response.data.feedback;
 
@@ -242,7 +242,13 @@ app.controller('counters_controller', function($scope, $http)
         
     } 
      
-        
+    $scope.alertTimer= function(){
+        $scope.feedbackShow=true;
+        $timeout( function(){
+               $scope.feedbackShow=false;
+          }, 3000)
+          
+        }  
       
 }
 );

@@ -38,7 +38,7 @@ app.controller('costumers_controller', function($scope, $http, $timeout)
            //the below alert for debugging purposes
            console.log("received: "+response.data.feedback)
             
-           $scope.feedbackShow='true';
+           $scope.alertTimer();
            $scope.feedbackClass = response.data.feedbackClass;
            $scope.feedback = response.data.feedback;
 
@@ -70,7 +70,7 @@ app.controller('costumers_controller', function($scope, $http, $timeout)
              //the below alert for debugging purposes
            console.log("received: "+response.data.feedback)
             
-           $scope.feedbackShow='true';
+           $scope.alertTimer();
            $scope.feedbackClass = response.data.feedbackClass;
            $scope.feedback = response.data.feedback;
 
@@ -132,6 +132,14 @@ app.controller('costumers_controller', function($scope, $http, $timeout)
         $scope.lastClick=x;
 
         //console.log("lastclick is :"+$scope.lastClick+"   the direction is :"+$scope.direction);
-    }        
+    } 
+     
+    $scope.alertTimer= function(){
+        $scope.feedbackShow=true;
+        $timeout( function(){
+               $scope.feedbackShow=false;
+          }, 3000)
+          
+        }
 }
 );

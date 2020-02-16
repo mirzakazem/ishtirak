@@ -38,7 +38,7 @@
         </thead>
 
         <tbody>
-            <tr ng-repeat="document in documents | orderBy:myOrderBy:direction | filter:searchBar ">
+            <tr ng-repeat="document in documents | orderBy:'-name' | filter:searchBar ">
                 
                 <th class="text-primary"><b>{{$index + 1}}</b></th>
                 <th>{{document.name}}</th>

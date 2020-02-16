@@ -15,6 +15,14 @@ if($userStatus!=0){
 }
 // ******************************
 
+// get the last day of the current month
+$currentDate = date("Y-m-d");
+$lastDayinMonth=date("Y-m-t", strtotime($currentDate));
+
+if($form_data->month>$lastDayinMonth){
+    $error[] = " can't insert data in future";
+}
+
 // KWPrice value validation
 if(empty($form_data->KWPrice))
     {
@@ -182,15 +190,16 @@ if(empty($error))
             mysqli_query($connect,$sql); 
             
             
-        $feedback= mysqli_affected_rows($connect)." new receipts has been issued";    
+        $feedback= mysqli_affected_rows($connect)." new receipts has been issued";  
+        $numOfAffectedRows=  mysqli_affected_rows($connect);
         }
 
     }
     
 
 }
-else
-        {
+
+else {
             $feedbackClass='danger';    
             $feedback = implode(", ", $error);
         }
@@ -199,6 +208,7 @@ else
 $output = array(
     'feedback' => $feedback,
     'feedbackClass' => $feedbackClass,
+    'numOfAffectedRows'=>$numOfAffectedRows
 );
 
 echo json_encode($output);

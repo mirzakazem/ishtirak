@@ -1,4 +1,4 @@
-app.controller('values_controller', function($scope, $http,$filter)
+app.controller('values_controller', function($scope, $http,$filter, $timeout)
 {  
     $scope.feedback=true;
     $scope.submitButton="OK";
@@ -65,7 +65,7 @@ app.controller('values_controller', function($scope, $http,$filter)
                  //the below alert for debugging purposes
            console.log("received: "+response.data.feedback)
             
-           $scope.feedbackShow='true';
+           $scope.alertTimer();
            $scope.feedbackClass = response.data.feedbackClass;
            $scope.feedback = response.data.feedback;
 
@@ -95,7 +95,7 @@ app.controller('values_controller', function($scope, $http,$filter)
                         //the below alert for debugging purposes
                         console.log("received: "+response.data.feedback)
                             
-                        $scope.feedbackShow='true';
+                        $scope.alertTimer();
                         $scope.feedbackClass = response.data.feedbackClass;
                         $scope.feedback = response.data.feedback;
 
@@ -151,7 +151,7 @@ app.controller('values_controller', function($scope, $http,$filter)
             //the below alert for debugging purposes
             console.log("received: "+response.data.feedback)
                             
-            $scope.feedbackShow='true';
+            $scope.alertTimer();
             $scope.feedbackClass = response.data.feedbackClass;
             $scope.feedback = response.data.feedback;
 
@@ -222,7 +222,13 @@ app.controller('values_controller', function($scope, $http,$filter)
         $scope.feedbackMessage='';
     }
      
-        
+    $scope.alertTimer= function(){
+        $scope.feedbackShow=true;
+        $timeout( function(){
+               $scope.feedbackShow=false;
+          }, 1000)
+          
+        }   
       
 }
 );

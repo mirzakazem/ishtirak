@@ -1,5 +1,5 @@
 
-app.controller('receipts', function($scope,$http,$filter) {
+app.controller('receipts', function($scope,$http,$filter, $timeout) {
 
 //--------------------- Receipts menu-------------------------	
 	$scope.val=0;
@@ -74,11 +74,11 @@ $scope.showOneReceipt=false;
              //the below alert for debugging purposes
            console.log("received: "+response.data.feedback)
             
-           $scope.feedbackShow='true';
+           $scope.alertTimer();
            $scope.feedbackClass = response.data.feedbackClass;
            $scope.feedback = response.data.feedback;
 
-          if(response.data.feedbackClass=='success')
+          if(response.data.feedbackClass=='success'&&response.data.numOfAffectedRows>0)
            {
             $scope.printReceiptPDF();
             $scope.submitButton="Add";
@@ -203,16 +203,14 @@ $scope.showOneReceipt=false;
             $scope.val=0//to hide the menu items
             
             //the below alert for debugging purposes
-           console.log("received: "+response.data.feedback)
+           console.log("received: "+response.data)
             
-           $scope.feedbackShow='true';
+           $scope.alertTimer();
            $scope.feedbackClass = response.data.feedbackClass;
            $scope.feedback = response.data.feedback;
 
           if(response.data.feedbackClass=='success')
            {
-            $scope.feedbackClass = 'valid-feedback';
-            $scope.feedbackMessage = response.data.message; 
             $scope.submitButton="Add";
             $scope.receipt={};
             $scope.getReceipts ();
@@ -244,14 +242,12 @@ $scope.showOneReceipt=false;
             //the below alert for debugging purposes
            console.log("received: "+response.data.feedback)
             
-           $scope.feedbackShow='true';
+           $scope.alertTimer();
            $scope.feedbackClass = response.data.feedbackClass;
            $scope.feedback = response.data.feedback;
 
           if(response.data.feedbackClass=='success')
            {
-            $scope.feedbackClass = 'valid-feedback';
-            $scope.feedbackMessage = response.data.message; 
             $scope.submitButton="Add";
             $scope.receipt={};
             $scope.getReceipts ();
@@ -347,4 +343,12 @@ $scope.showOneReceipt=false;
         $scope.showAllReceipts=true;
         $scope.showOneReceipt=false;
     }
+
+    $scope.alertTimer= function(){
+        $scope.feedbackShow=true;
+        $timeout( function(){
+               $scope.feedbackShow=false;
+          }, 3000)
+          
+        }
 });

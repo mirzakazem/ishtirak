@@ -24,9 +24,9 @@ $IDs=$form_data->IDs;
 $array=implode(',', $IDs);
 
 $sql="update countersvalues 
-inner join receipts  on countersvalues.id=receipts.valueid
 set countersvalues.issued=0
-where receipts.id in ($array); ";
+where countersvalues.id in ( select valueid from receipts where receipts.id in ($array));
+ ";
 
 mysqli_query($connect,$sql);
 
