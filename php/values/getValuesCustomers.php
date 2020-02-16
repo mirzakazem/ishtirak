@@ -45,6 +45,7 @@ if($result = mysqli_query($connect,$sql))
   $count = mysqli_num_rows($result);
 
   $counter = 0;
+  $nullValusCounter=0;
   while($row = mysqli_fetch_assoc($result))
   {
       $counters[$counter]['id']  = $row['id'];
@@ -60,6 +61,9 @@ if($result = mysqli_query($connect,$sql))
       else{
         $counters[$counter]['disabled']='false';
       }
+      if($row['newValue']>0){
+        $nullValusCounter++;
+      }
 
 
       $counter++;
@@ -71,7 +75,9 @@ $data = array(
     'year' => $year,
     'month' => $month,
     'day' => $day,
-    'counters'=>$counters
+    'counters'=>$counters,
+    'totalCounters'=>$counter,
+    'nullValusCounter'=>$nullValusCounter
    );
 
 $output = json_encode($data);

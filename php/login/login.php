@@ -51,6 +51,7 @@ if(empty($error))
     {
      
     $_SESSION["ID"] = $row["ID"];
+    $_SESSION["expired"] = $row["expired"];
 
     $userID=$row["ID"];
 

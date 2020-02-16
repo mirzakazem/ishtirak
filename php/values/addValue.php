@@ -8,6 +8,13 @@ $message='';
 $validation_error = '';
 $userID= $_SESSION["ID"];
 
+$userStatus=$_SESSION["expired"];
+//check expiration status ------------
+if($userStatus!=0){
+    $error[] = 'user is expired';
+}
+//********************************
+
 // get the boxOrder
 
 $boxOrder=$form_data->boxOrder;
@@ -183,6 +190,7 @@ if(empty($error))
 
 if(empty($error))
 {
+    $feedbackClass='success';
     $consumption=$new-$DBLastNewValue;    
     $sql= "
         INSERT INTO countersvalues (counterID, userID, previousValue, newValue, consumption, month) 
@@ -190,22 +198,23 @@ if(empty($error))
         ";
         if (mysqli_query($connect, $sql)) 
         {
-        $message = 'new value has been added for '.$boxOrder;
+        $feedback = 'new value has been added for '.$boxOrder;
         
         }   
    // insert the data *****************************************               
 }
 else
         {
-            $validation_error = implode("   | ", $error);
+            $feedbackClass='danger';    
+            $feedback = implode(", ", $error);
         }
         
 
 
 
 $output = array(
-    'error'  => $validation_error,
-    'message' => $message,
+    'feedback' => $feedback,
+ 'feedbackClass' => $feedbackClass,
     'id'=>$counterID,
     'month'=>$month,
     'lasDay'=>$lastDayinMonth

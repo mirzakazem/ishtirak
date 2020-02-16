@@ -22,9 +22,9 @@ app.controller('expenses_controller', function($scope, $http,$filter)
        
         $scope.search.from = $filter('date')($scope.search.from,"yyyy-MM-dd")
         $scope.search.to = $filter('date')($scope.search.to,"yyyy-MM-dd")
-        /*console.log("from sent :"+$scope.search.bar)
+        console.log("bar sent :"+$scope.search.bar)
         console.log("from sent :"+$scope.search.from);
-        console.log("To   sent :"+$scope.search.to);*/
+        console.log("To   sent :"+$scope.search.to);
         
         $http({ 
          method:"POST",
@@ -59,22 +59,15 @@ app.controller('expenses_controller', function($scope, $http,$filter)
          url:"php/expenses/addExpense.php",
          data:$scope.expense
         }).then(function(response){
-         //the below alert for debugging purposes
-         
-        /*console.log("message:"+response.data.message)
-        console.log("error:"+response.data.error)*/
-        
-         if(response.data.error != '')
-         {
-            
-          $scope.feedbackClass = 'invalid-feedback';
-          $scope.feedbackMessage = response.data.error;
-         }
-         else
-         {
-             
-          $scope.feedbackClass = 'valid-feedback';
-          $scope.feedbackMessage=response.data.message; 
+        //the below alert for debugging purposes
+        console.log("received: "+response.data.feedback)
+                            
+        $scope.feedbackShow='true';
+        $scope.feedbackClass = response.data.feedbackClass;
+        $scope.feedback = response.data.feedback;
+
+        if(response.data.feedbackClass=='success')
+        {
           $scope.expense = {};
           $scope.submitButton="Add";
             $scope.getExpenses ();
@@ -100,9 +93,20 @@ app.controller('expenses_controller', function($scope, $http,$filter)
         data:  id
         }).then(function (response)
         { 
-        $scope.feedbackClass = 'valid-feedback';
-        $scope.feedbackMessage = response.data.message;      
+        //the below alert for debugging purposes
+        console.log("received: "+response.data.feedback)
+                            
+        $scope.feedbackShow='true';
+        $scope.feedbackClass = response.data.feedbackClass;
+        $scope.feedback = response.data.feedback;
+
+        if(response.data.feedbackClass=='success')
+        {
+            $scope.submitButton="OK";
+        $scope.customer={};
         $scope.getExpenses();
+        } 
+
         }, function (response) 
         {
         console.log(response.data,response.status);

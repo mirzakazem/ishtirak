@@ -1,4 +1,7 @@
 <?php
+session_start();
+
+print_r($_SESSION);
 
 //just a comment
 $givenDate=date('2020-01-01');
@@ -15,5 +18,7 @@ if($givenDate>$lastDayinMonth){
 else{
     echo"ok";
 }
+
+
 
 ?>

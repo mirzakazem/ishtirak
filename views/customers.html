@@ -59,9 +59,14 @@
 											</div>
 										</div>
 									</div>
-									<div class="{{feedbackClass}} d-block" ng-show="{{feedback}}">
-										{{feedbackMessage}}
+
+									<div class="alert alert-{{feedbackClass}} alert-dismissible fade show" role="alert" ng-show='feedbackShow'>
+											{{feedback}}
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+											</button>
 									</div>
+
 								</form>
 				</div>
 		

@@ -11,6 +11,13 @@ $validation_error = '';
 $userID=$_SESSION["ID"];
 $counterID="";
 
+$userStatus=$_SESSION["expired"];
+//check expiration status ------------
+if($userStatus!=0){
+    $error[] = 'user is expired';
+}
+
+
 //id validation ----------------------------------
 if(empty($form_data->id))
     {
@@ -93,6 +100,7 @@ $sql= "
 // insert the data ----------------------------------------
 if(empty($error))
 {
+    $feedbackClass='success';
     
         $sql= "
         update counters set ampere = '$ampere', box='$box', counters.order='$order'
@@ -100,7 +108,7 @@ if(empty($error))
         ";
         if (mysqli_query($connect, $sql)) 
         {
-        $message = 'Counter has been updated';
+        $feedback = 'Counter has been updated';
         
         }
               
@@ -108,12 +116,13 @@ if(empty($error))
 
 else
         {
-        $validation_error = implode(", ", $error);
+            $feedbackClass='danger';    
+            $feedback = implode(", ", $error);
         }
 
 $output = array(
- 'error'  => $validation_error,
- 'message' => $message,
+    'feedback' => $feedback,
+    'feedbackClass' => $feedbackClass,
  'id'=>$counterID
 );
 // insert the data *************************************************

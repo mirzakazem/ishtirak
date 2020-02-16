@@ -71,25 +71,21 @@ $scope.showOneReceipt=false;
             url:"php/receipts/issueReceipts.php",
             data:$scope.receipt
         }).then(function(response){
-            //the below alert for debugging purposes
-            //console.log("received data: "+response.data.KWPrice) 
-           
-           $scope.form_data=response.data.form_data;
-            if(response.data.error != '')
-            {
+             //the below alert for debugging purposes
+           console.log("received: "+response.data.feedback)
+            
+           $scope.feedbackShow='true';
+           $scope.feedbackClass = response.data.feedbackClass;
+           $scope.feedback = response.data.feedback;
 
-            $scope.feedbackClass = 'invalid-feedback';
-            $scope.feedbackMessage = response.data.error;
-            }
-            else
-            {
+          if(response.data.feedbackClass=='success')
+           {
             $scope.printReceiptPDF();
-            $scope.feedbackClass = 'valid-feedback';
-            $scope.feedbackMessage = response.data.message; 
             $scope.submitButton="Add";
             $scope.receipt={};
             $scope.getReceipts ();
-            }
+           }
+            
         },
         function (error) {
         
@@ -205,21 +201,23 @@ $scope.showOneReceipt=false;
             $scope.IDs = [];
             $scope.options="hidden"//the menu items
             $scope.val=0//to hide the menu items
-            if(response.data.error != '')
-            {
+            
+            //the below alert for debugging purposes
+           console.log("received: "+response.data.feedback)
+            
+           $scope.feedbackShow='true';
+           $scope.feedbackClass = response.data.feedbackClass;
+           $scope.feedback = response.data.feedback;
 
-            $scope.feedbackClass = 'invalid-feedback';
-            $scope.feedbackMessage = response.data.error;
-            }
-            else
-            {
-               
+          if(response.data.feedbackClass=='success')
+           {
             $scope.feedbackClass = 'valid-feedback';
             $scope.feedbackMessage = response.data.message; 
             $scope.submitButton="Add";
             $scope.receipt={};
             $scope.getReceipts ();
-            }
+           }
+            
         },
         function (error) {
         
@@ -243,21 +241,22 @@ $scope.showOneReceipt=false;
             $scope.IDs = [];
             $scope.options="hidden"//the menu items
             $scope.val=0//to hide the menu items
-            if(response.data.error != '')
-            {
+            //the below alert for debugging purposes
+           console.log("received: "+response.data.feedback)
+            
+           $scope.feedbackShow='true';
+           $scope.feedbackClass = response.data.feedbackClass;
+           $scope.feedback = response.data.feedback;
 
-            $scope.feedbackClass = 'invalid-feedback';
-            $scope.feedbackMessage = response.data.error;
-            }
-            else
-            {
-               
+          if(response.data.feedbackClass=='success')
+           {
             $scope.feedbackClass = 'valid-feedback';
             $scope.feedbackMessage = response.data.message; 
             $scope.submitButton="Add";
             $scope.receipt={};
             $scope.getReceipts ();
-            }
+           }
+            
         },
         function (error) {
         

@@ -8,6 +8,16 @@ $message='';
 $validation_error = '';
 $userID=$_SESSION["ID"];
 
+$userStatus=$_SESSION["expired"];
+//check expiration status ------------
+if($userStatus!=0){
+    $feedback = 'user is expired';
+    $feedbackClass = 'danger';
+}
+
+if(empty($feedback))
+{
+
 //value validation
 
 $IDs=$form_data->IDs;   
@@ -26,15 +36,14 @@ $sql = "update `receipts`
 mysqli_query($connect,$sql);
 
 
-$message= mysqli_affected_rows($connect).' receipts has been deleted';
+$feedback= mysqli_affected_rows($connect).' receipts has been deleted';
+$feedbackClass = 'success';
+}
 
- //$validation_error = implode(", ", $error);
-
- 
 
 $output = array(
- 'error'  => $validation_error,
- 'message' => $message,
+        'feedback' => $feedback,
+        'feedbackClass' => $feedbackClass,
  'form_data'=>$form_data
 );
 

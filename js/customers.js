@@ -35,23 +35,19 @@ app.controller('costumers_controller', function($scope, $http, $timeout)
          url:"php/customers/addCustomer.php",
          data:$scope.customer
         }).then(function(response){
-         //the below alert for debugging purposes
-         //console.log(response.data)
-         
-        
-         if(response.data.error != '')
-         {
-          $scope.feedbackClass = 'invalid-feedback';
-          $scope.feedbackMessage = response.data.error;
-         }
-         else
-         {
-          $scope.feedbackClass = 'valid-feedback';
-          $scope.feedbackMessage = response.data.message; 
-          $scope.submitButton="Add";
-          $scope.customer={};
-        $scope.getCustomers ();
-         }
+           //the below alert for debugging purposes
+           console.log("received: "+response.data.feedback)
+            
+           $scope.feedbackShow='true';
+           $scope.feedbackClass = response.data.feedbackClass;
+           $scope.feedback = response.data.feedback;
+
+          if(response.data.feedbackClass=='success')
+           {
+           $scope.submitButton="Add";
+           $scope.customer={};
+           $scope.getCustomers ();
+           }
         },
         function (error) {
       
@@ -71,9 +67,19 @@ app.controller('costumers_controller', function($scope, $http, $timeout)
         data:  id
         }).then(function (response)
         { 
-        $scope.feedbackClass = 'valid-feedback';
-        $scope.feedbackMessage = response.data.message;      
-        $scope.getCustomers();
+             //the below alert for debugging purposes
+           console.log("received: "+response.data.feedback)
+            
+           $scope.feedbackShow='true';
+           $scope.feedbackClass = response.data.feedbackClass;
+           $scope.feedback = response.data.feedback;
+
+          if(response.data.feedbackClass=='success')
+           {
+           $scope.submitButton="Add";
+           $scope.customer={};
+           $scope.getCustomers ();
+           }
         }, function (response) 
         {
         console.log(response.data,response.status);

@@ -4,12 +4,21 @@ session_start();
 include('../database_connection.php');
 
 $form_data = json_decode(file_get_contents("php://input"));
-$message='';
+$feedback='';
 $validation_error = '';
 
 
 $userID=$_SESSION["ID"];
 $customerID="";
+
+$userStatus=$_SESSION["expired"];
+//check expiration status ------------
+if($userStatus!=0){
+    $error[] = 'user is expired';
+}
+// ******************************
+
+
 
 //id validation----------------------------------
 if(empty($form_data->id))
@@ -114,6 +123,7 @@ $sql= "
 // insert the data Case counter "no"------------------------------------------
 if(empty($error))
 {
+    $feedbackClass='success';
     if($isCounter=='no')
     {
         $sql= "
@@ -122,7 +132,7 @@ if(empty($error))
         ";
         if (mysqli_query($connect, $sql)) 
         {
-        $message = 'Breaker has been added';
+        $feedback = 'Breaker has been added';
         
         } 
     }
@@ -134,7 +144,7 @@ if(empty($error))
         ";
         if (mysqli_query($connect, $sql)) 
         {
-        $message = 'counter has been added';
+        $feedback = 'counter has been added';
         
         }  
     }
@@ -142,12 +152,14 @@ if(empty($error))
 }
 else
         {
-        $validation_error = implode(", ", $error);
+        $feedbackClass='danger';    
+        $feedback = implode(", ", $error);
         }
+        
 // insert the data *******************************************
 $output = array(
- 'error'  => $validation_error,
- 'message' => $message,
+ 'feedback' => $feedback,
+ 'feedbackClass' => $feedbackClass,
  'id'=>$customerID
 );
 

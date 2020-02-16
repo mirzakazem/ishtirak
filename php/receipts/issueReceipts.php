@@ -8,6 +8,12 @@ $message='';
 $validation_error = '';
 $userID= $_SESSION["ID"];
 
+$userStatus=$_SESSION["expired"];
+//check expiration status ------------
+if($userStatus!=0){
+    $error[] = 'user is expired';
+}
+// ******************************
 
 // KWPrice value validation
 if(empty($form_data->KWPrice))
@@ -101,6 +107,7 @@ else {
 // insert the data
 if(empty($error))
 {
+    $feedbackClass='success';
         // get the non-issued values
     $sql = "
 
@@ -175,7 +182,7 @@ if(empty($error))
             mysqli_query($connect,$sql); 
             
             
-        $message= mysqli_affected_rows($connect)." new receipts has been issued";    
+        $feedback= mysqli_affected_rows($connect)." new receipts has been issued";    
         }
 
     }
@@ -184,26 +191,16 @@ if(empty($error))
 }
 else
         {
-        $validation_error = implode(" | ", $error);
+            $feedbackClass='danger';    
+            $feedback = implode(", ", $error);
         }
 
        
 $output = array(
- 'error'  => $validation_error,
- 'message' => $message
+    'feedback' => $feedback,
+    'feedbackClass' => $feedbackClass,
 );
 
 echo json_encode($output);
-//print_r($_POST);
 
-
-/*
-$startdate ="2019-04-01";
-$year=substr($startdate,0,4);
-$month=substr($startdate,5,2)+1;
-$day=substr($startdate,8,2);
-
-$nextdate=$year."-".$month."-".$day;
-echo($nextdate);
-*/
 ?>    

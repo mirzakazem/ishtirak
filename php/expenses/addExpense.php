@@ -7,6 +7,12 @@ $form_data = json_decode(file_get_contents("php://input"));
 $message='';
 $validation_error = '';
 
+$userStatus=$_SESSION["expired"];
+//check expiration status ------------
+if($userStatus!=0){
+    $error[] = 'user is expired';
+}
+// ******************************
 
 //Title validation
 if(empty($form_data->title))
@@ -64,7 +70,7 @@ $userID=$_SESSION["ID"];
 
 // insert the data
 if(empty($error))
-{
+{   $feedbackClass='success';    
     if(empty($form_data->id))
     {
         $sql= "
@@ -73,7 +79,7 @@ if(empty($error))
         ";
         if (mysqli_query($connect, $sql)) 
         {
-        $message = 'payment has been added';
+        $feedback = 'payment has been added';
         
         }
     }
@@ -86,7 +92,7 @@ if(empty($error))
         "; 
         if (mysqli_query($connect, $sql)) 
         {
-        $message = 'info of payment '.$id.' has been updated';
+        $feedback = 'payment has been updated';
         
         }
     }    
@@ -97,12 +103,13 @@ if(empty($error))
 
 else
         {
-        $validation_error = implode(", ", $error);
+            $feedbackClass='danger';    
+            $feedback = implode(", ", $error);
         }
 
 $output = array(
- 'error'  => $validation_error,
- 'message' => $message
+    'feedback' => $feedback,
+    'feedbackClass' => $feedbackClass,
 );
 
 echo json_encode($output);

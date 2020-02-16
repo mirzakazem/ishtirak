@@ -10,6 +10,13 @@ $validation_error = '';
 
 $userID=$_SESSION["ID"];
 
+$userStatus=$_SESSION["expired"];
+//check expiration status ------------
+if($userStatus!=0){
+    $error[] = 'user is expired';
+}
+
+
 // check counter ID *****************
 if(empty($form_data->counterID)){
     $error[] = 'counter ID required';   
@@ -158,13 +165,14 @@ if(empty($error))
 
 if(empty($error))
 {
+    $feedbackClass='success';
     $consumption=$new-$DBLastNewValue;
     $sql= "
     UPDATE `countersvalues` SET `newValue`='$new', `consumption`='$consumption', `month`='$month', `issued`='0' where ID='$valueID'
         ";
         if (mysqli_query($connect, $sql)) 
         {
-        $message = 'value has been updated';
+        $feedback = 'value has been updated';
         } 
          
         $sql= "
@@ -175,14 +183,16 @@ if(empty($error))
  // insert the data *****************************************************************       
                   
 }
-else
- $validation_error = implode("   | ", $error);
+else{
+    $feedbackClass='danger';    
+    $feedback = implode(", ", $error);
+}
+
       
 
 $output = array(
- 'error'  => $validation_error,
- 'message' => $message,
- 
+    'feedback' => $feedback,
+    'feedbackClass' => $feedbackClass,
 );
 
 echo json_encode($output);

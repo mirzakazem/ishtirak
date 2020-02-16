@@ -3,8 +3,7 @@ app.controller('counters_controller', function($scope, $http)
     
 
     $scope.resetForm = function(){
-        $scope.feedback=true;
-        $scope.feedbackMessage='';
+        $scope.feedbackShow=false;
         $scope.submitButton="Add";
         $scope.submitButtonClass="btn-success";
         $scope.prepend = "Customer ID";
@@ -78,18 +77,14 @@ app.controller('counters_controller', function($scope, $http)
             data:$scope.customer
         }).then(function(response){
             //the below alert for debugging purposes
-            console.log("received: "+response.data.message)
-            if(response.data.error != '')
-            {
+            console.log("received: "+response.data.feedback)
+            
+            $scope.feedbackShow='true';
+            $scope.feedbackClass = response.data.feedbackClass;
+            $scope.feedback = response.data.feedback;
 
-            $scope.feedbackClass = 'invalid-feedback';
-            $scope.feedbackMessage = response.data.error;
-            }
-            else
+           if(response.data.feedbackClass=='success')
             {
-        
-            $scope.feedbackClass = 'valid-feedback';
-            $scope.feedbackMessage = response.data.message; 
             $scope.submitButton="Add";
             $scope.customer={};
             $scope.getCounters ();
@@ -109,23 +104,19 @@ app.controller('counters_controller', function($scope, $http)
                 url:"php/counters/editCounter.php",
                 data:$scope.customer
             }).then(function(response){
-                //the below alert for debugging purposes
-                //console.log("received: "+response.data.message)
-                if(response.data.error != '')
-                {
-    
-                $scope.feedbackClass = 'invalid-feedback';
-                $scope.feedbackMessage = response.data.error;
-                }
-                else
-                {
+                 //the below alert for debugging purposes
+            console.log("received: "+response.data.feedback)
             
-                $scope.feedbackClass = 'valid-feedback';
-                $scope.feedbackMessage = response.data.message; 
-                $scope.submitButton="Add";
-                $scope.customer={};
-                $scope.getCounters ();
-                }
+            $scope.feedbackShow='true';
+            $scope.feedbackClass = response.data.feedbackClass;
+            $scope.feedback = response.data.feedback;
+
+           if(response.data.feedbackClass=='success')
+            {
+            $scope.submitButton="Add";
+            $scope.customer={};
+            $scope.getCounters ();
+            }
             },
             function (error) {
             
@@ -165,10 +156,20 @@ app.controller('counters_controller', function($scope, $http)
          data:  id
          }).then(function (response)
          { 
-         $scope.feedbackClass = 'valid-feedback';
-         $scope.feedbackMessage = response.data.message; 
-         $scope.customer={}     
-         $scope.getCounters();
+          //the below alert for debugging purposes
+          console.log("received: "+response.data.feedback);
+            
+          $scope.feedbackShow='true';
+          $scope.feedbackClass = response.data.feedbackClass;
+          $scope.feedback = response.data.feedback;
+
+         if(response.data.feedbackClass=='success')
+          {
+          $scope.submitButton="Add";
+          $scope.customer={};
+          $scope.getCounters ();
+          } 
+
          }, function (response) 
          {
          console.log(response.data,response.status);

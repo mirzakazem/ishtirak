@@ -4,9 +4,17 @@ session_start();
 include('../database_connection.php');
 
 $form_data = json_decode(file_get_contents("php://input"));
-$message='';
-$validation_error = '';
 $userID=$_SESSION["ID"];
+
+
+$userStatus=$_SESSION["expired"];
+//check expiration status ------------
+if($userStatus!=0){
+    $error[] = 'user is expired';
+}
+
+
+// ******************************
 
 //first name validation------------
 if(empty($form_data->fullName))
@@ -101,6 +109,8 @@ if(empty($error))
 // insert the data --------------------------------
 if(empty($error))
 {
+    $feedbackClass='success';
+
     if(empty($form_data->id))
     {
         $sql= "
@@ -109,7 +119,7 @@ if(empty($error))
         ";
         if (mysqli_query($connect, $sql)) 
         {
-        $message = 'Registration Completed';
+        $feedback = 'new customer added successfully';
         
         }
     }
@@ -122,7 +132,7 @@ if(empty($error))
         "; 
         if (mysqli_query($connect, $sql)) 
         {
-        $message = 'Cutomer info has been updated';
+        $feedback = 'Customer info has been updated';
         
         }
     }    
@@ -131,12 +141,13 @@ if(empty($error))
 // insert data ***************************************************************************
 else
         {
-        $validation_error = implode(", ", $error);
+            $feedbackClass='danger';    
+            $feedback = implode(", ", $error);
         }
 
 $output = array(
- 'error'  => $validation_error,
- 'message' => $message
+ 'feedback' => $feedback,
+ 'feedbackClass' => $feedbackClass,
 );
 
 echo json_encode($output);

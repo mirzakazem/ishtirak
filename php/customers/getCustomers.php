@@ -13,8 +13,9 @@ SELECT customers.*, count(counters.customerID) AS NumberOfCounters
 FROM customers  
 left join counters
 on customers.ID= counters.customerID
-where customers.userID = $userID and customers.active = 1
-group by customers.ID;
+where customers.userID = $userID and customers.active = 1 
+group by customers.ID
+order by customers.createdOn Desc;;
  ";
 
 if($result = mysqli_query($connect,$sql))

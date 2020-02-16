@@ -72,7 +72,7 @@ session_start();
               <label>Password</label>
               <input type="password" name="password" ng-model="loginData.password" class="form-control" />
               </div>
-              <div class="form-group" align="center">
+              <div class="form-group" align='center'>
               <input type="submit" name="login" class="btn btn-primary" value="Login" />
               <br />
               <input type="button" name="register_link" class="btn btn-primary btn-link" ng-click="showRegister()" value="Register" />
@@ -116,7 +116,30 @@ session_start();
         </div>
       </div><!-- register Form End-->
 
+    
+    <div class="alert alert-danger" role="alert">
+      <p class="text-right">
+        الاشتراك الشهري 25 الف ليرة
+      </p> 
+      <p class="text-right">
+        الشهر الاول مجاني
+      </p>
+      <p class="text-right">
+      حتى بعد انتهاء الفترة المجانية او بعد انتهاء الاشتراك الشهري تبقى لديك القدرة على رؤية معلوماتك 
+      </p>
+      <p class="text-right">
+      للإشتراك او للإستفسار الرجاء التواصل مع مصمم البرنامج, 
+      
+      <b>كاظم السبلاني</b>
+       على الرقم
+       <b>70083485</b>
+        
+
+      </p>
+    </div>
   </div>  <!-- login col ended --> 
+
+  
 </div>   <!-- login row ended -->
      
 

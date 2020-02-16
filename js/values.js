@@ -21,8 +21,11 @@ app.controller('values_controller', function($scope, $http,$filter)
         data:  $scope.counter.month
         }).then(function (response)
         { 
+            
             console.log(response.data)
             $scope.customers=response.data.counters;
+            $scope.totalCounters=response.data.totalCounters;
+            $scope.nullValusCounter=response.data.nullValusCounter;
         }, function (response) 
         {
         console.log(response.data,response.status);
@@ -59,25 +62,19 @@ app.controller('values_controller', function($scope, $http,$filter)
                 url:"php/values/addValue.php",
                 data:$scope.counter
             }).then(function(response){
-                //the below alert for debugging purposes
-                
-               //console.log("error: "+response.data.error)  
-               
-                if(response.data.error != '')
-                {
-    
-                $scope.feedbackClass = 'invalid-feedback';
-                $scope.feedbackMessage = response.data.error;
-                }
-                else
-                {
-                console.log("received from addValue"+response.data)   
-                $scope.feedbackClass = 'valid-feedback';
-                $scope.feedbackMessage = response.data.message; 
-                $scope.submitButton="OK";
-                $scope.getValues ();
-                
-                }
+                 //the below alert for debugging purposes
+           console.log("received: "+response.data.feedback)
+            
+           $scope.feedbackShow='true';
+           $scope.feedbackClass = response.data.feedbackClass;
+           $scope.feedback = response.data.feedback;
+
+          if(response.data.feedbackClass=='success')
+           {
+            $scope.submitButton="OK";
+           $scope.customer={};
+           $scope.getValues ();
+           }    
             },
             function (error) {
             
@@ -95,22 +92,19 @@ app.controller('values_controller', function($scope, $http,$filter)
                     url:"php/values/editValue.php",
                     data:$scope.counter
                 }).then(function(response){
-                    //the below alert for debugging purposes
-                    console.log("received: "+response.data)
-                    if(response.data.error != '')
-                    {
-        
-                    $scope.feedbackClass = 'invalid-feedback';
-                    $scope.feedbackMessage = response.data.error;
-                    }
-                    else
-                    {
-                
-                    $scope.feedbackClass = 'valid-feedback';
-                    $scope.feedbackMessage = response.data.message; 
-                    $scope.submitButton="OK";
-                    $scope.getValues ();
-                    }
+                        //the below alert for debugging purposes
+                        console.log("received: "+response.data.feedback)
+                            
+                        $scope.feedbackShow='true';
+                        $scope.feedbackClass = response.data.feedbackClass;
+                        $scope.feedback = response.data.feedback;
+
+                        if(response.data.feedbackClass=='success')
+                        {
+                            $scope.submitButton="OK";
+                        $scope.customer={};
+                        $scope.getValues ();
+                        } 
                 },
                 function (error) {
                 
@@ -153,11 +147,21 @@ app.controller('values_controller', function($scope, $http,$filter)
          url:  'php/values/deleteValue.php',
          data:  id
          }).then(function (response)
-         { 
-         $scope.feedbackClass = 'valid-feedback';
-         $scope.feedbackMessage = response.data.message;      
-         $scope.getValues();
-         $scope.getValuesCustomers();
+         {
+            //the below alert for debugging purposes
+            console.log("received: "+response.data.feedback)
+                            
+            $scope.feedbackShow='true';
+            $scope.feedbackClass = response.data.feedbackClass;
+            $scope.feedback = response.data.feedback;
+
+            if(response.data.feedbackClass=='success')
+            {
+                $scope.submitButton="OK";
+            $scope.customer={};
+            $scope.getValues ();
+            }  
+        
          
          }, function (response) 
          {
