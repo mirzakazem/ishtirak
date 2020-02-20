@@ -1,6 +1,7 @@
 # before any updates, backup the PDF files, move documents from public-HTML --> /ishtirak.live/kazem/
 
 # 1.next update 
+ 1. load libraries after sign-in, remove main and customer pages from views
  1. search on how can force user to clear cache for one time after update
  1. get tcpdf from cdn
  1. add expiry date to new users
