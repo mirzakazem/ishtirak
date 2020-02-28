@@ -1,13 +1,14 @@
 # before any updates, backup the PDF files, move documents from public-HTML --> /ishtirak.live/kazem/
 
 # 1.next update 
+ 1. load libraries after sign-in, remove main and customer pages from views
  1. search on how can force user to clear cache for one time after update
- 1. get tcpdf from cdn
  1. add expiry date to new users
  1. check expired users daily, (after each login)
  1. fix the neccessity to zoom out
 
 # 1.check later
+ 1. apply seo best practices
  1. edit receipts to consider regular breaker
  1. edit receipt to make text ajax queries 
  1. create seach bar (ajax calls)
