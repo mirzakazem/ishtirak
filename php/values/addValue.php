@@ -55,21 +55,7 @@ if(empty($form_data->month))
 }
 else {
     
-$year=substr($form_data->month,0,4);
-$month=substr($form_data->month,5,2);
-$month=(int)$month+1;// because php decrease string by 1, so i add 1;
-if($month==13)// to avoid get value 13 to january
-{
-  $month="01";
-  $year=(int)$year+1;
-}
-
-$day="01";
-
-
-$month= date($year."-".$month."-".$day);
-
-
+    $month=date("Y-m-d", strtotime($form_data->month));
 }
 // date validation ***************************************** 
 
