@@ -47,14 +47,27 @@ if(empty($error))
     if (mysqli_num_rows($res) == 1) 
     {
     $row = mysqli_fetch_assoc($res);
+    
    if(password_verify($password, $row['password']))
     {
      
     $_SESSION["ID"] = $row["ID"];
-    $_SESSION["expired"] = $row["expired"];
-
     $userID=$row["ID"];
 
+    //get expiry date
+    $expiryDate= date("Y-m-d", strtotime($row['expiryDate']));
+    $currentDate= date("Y-m-d");
+
+    //check if user expired, then: update expired to 1, else keep it 0.
+    if($currentDate>$expiryDate){
+      $_SESSION["expired"] =1;
+      $sql = "UPDATE `users` SET `expired`='1' WHERE `ID`=$userID";
+    mysqli_query($connect,$sql);
+    }
+    else{
+      $_SESSION["expired"] =0;
+    }
+    
     $timeStamp= date('Y-m-d H:i:s');
 
     $sql = "UPDATE `users` SET `lastLogin`='$timeStamp' WHERE `ID`=$userID";
