@@ -8,6 +8,8 @@ $message='';
 $validation_error = '';
 $userID= $_SESSION["ID"];
 
+$numOfAffectedRows="";
+
 $userStatus=$_SESSION["expired"];
 //check expiration status ------------
 if($userStatus!=0){
@@ -38,7 +40,7 @@ if(empty($form_data->KWPrice))
             }
 
 // A5 value validation
-if(empty($form_data->A5))
+if(!isset($form_data->A5)or$form_data->A5<0)
     {
     $error[] = '5 ampere value is Required';
     }
@@ -52,7 +54,7 @@ if(empty($form_data->A5))
             }
 
 // A10 value validation
-if(empty($form_data->A10))
+if(!isset($form_data->A10)or$form_data->A10<0)
     {
     $error[] = '10 ampere value is Required';
     }
@@ -66,7 +68,7 @@ if(empty($form_data->A10))
             }
 
 // A15 value validation
-if(empty($form_data->A15))
+if(!isset($form_data->A15)or$form_data->A15<0)
     {
     $error[] = '15 ampere value is Required';
     }
@@ -80,7 +82,7 @@ if(empty($form_data->A15))
             }
 
 // A20 value validation
-if(empty($form_data->A20))
+if(!isset($form_data->A15)or$form_data->A15<0)
     {
     $error[] = '20 ampere value is Required';
     }

@@ -4,21 +4,20 @@ session_start();
 print_r($_SESSION);
 
 //just a comment
-$givenDate=date('2020-01-01');
+$givenDate=date("Y-m-d", strtotime('2020-02-029'));
 
 
 $currentDate = date("Y-m-d");
 $lastDayinMonth=date("Y-m-t", strtotime($currentDate));
 
-echo"Given ".$givenDate." lastDy: ".$lastDayinMonth;
+echo"Given ".$givenDate." currentDate: ".$lastDayinMonth;
 
-if($givenDate>$lastDayinMonth){
-    echo"no future";
+if($currentDate>$givenDate){
+    echo"expire";
 }
 else{
-    echo"ok";
+    echo"active";
 }
-
 
 
 ?>
