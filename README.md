@@ -2,6 +2,7 @@
 
 # 1.next update 
  1. load libraries after sign-in, remove main and customer pages from views
+ 1. fix timestamp when adding records $timeStamp= date('Y-m-d H:i:s');
  1. search on how can force user to clear cache for one time after update
  1. add expiry date to new users
  1. check expired users daily, (after each login)
