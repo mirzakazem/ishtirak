@@ -113,9 +113,11 @@ if(empty($error))
 
     if(empty($form_data->id))
     {
+        $timeStamp= date('Y-m-d H:i:s');
+        
         $sql= "
-        INSERT INTO customers (userID, fullName, phone, address, email) 
-        VALUES ('$userID', '$fullName','$phone', '$address', '$email')
+        INSERT INTO customers (userID, fullName, phone, address, email, CreatedOn) 
+        VALUES ('$userID', '$fullName','$phone', '$address', '$email','$timeStamp')
         ";
         if (mysqli_query($connect, $sql)) 
         {
