@@ -50,7 +50,7 @@ session_start();
 
   <div ng-controller="login_register_controller" class="col-6 offset-3">
 
-  <img src="img/logoIshtirak.png" class="rounded mx-auto d-block" height="200" alt="logo Ishtirak">
+  <img src="img/Ishtirak.png" class="rounded mx-auto d-block" height="200" alt="Ishtirak">
 
       <div class="alert {{alertClass}} alert-dismissible" ng-show="alertMsg">
       <a href="#" class="close" ng-click="closeMsg()" aria-label="close">&times;</a>
