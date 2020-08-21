@@ -19,5 +19,7 @@ else{
     echo"active";
 }
 
+echo"just for testing";
+
 
 ?>
