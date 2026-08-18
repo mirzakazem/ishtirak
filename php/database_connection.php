@@ -5,7 +5,7 @@ if($ip_server =='160.153.133.148')
     {// online
         $servername = "localhost";
         $username = "kazem";
-        $password = "@dm1nIshtiraK";
+        $password = "{}IshtiraK";
         $dbname="ishtirak";
     }
 else{//local
